@@ -32,7 +32,7 @@ for (let i = 0; i < nav.length; i++) {
     nav[i].addEventListener('click', changeClassActive, false);
 };
 
-// calculate ausn
+// calculator ausn
 
 const ausn = document.querySelector('.ausn');
 const formAusn = ausn.querySelector('.calc__form');
@@ -54,7 +54,7 @@ formAusn.addEventListener('input', function() {
     }
 })
 
-// calculate self-employment
+// calculator self-employment
 
 const selfEmployment = document.querySelector('.self-employment');
 const formSelfEmployment = selfEmployment.querySelector('.calc__form');
@@ -94,4 +94,35 @@ formSelfEmployment.addEventListener('input', function() {
     resultTaxCompensation.textContent =formatCurrency(benefits - finalBenefits);
     resultTaxRestCompensation.textContent =formatCurrency(finalBenefits);
     resultTaxResult.textContent =formatCurrency(finalTax);
+})
+
+// calculator osno
+
+const osno = document.querySelector('.osno');
+const formOsno = osno.querySelector('.calc__form');
+
+const resultBlockNdflExpenditure = osno.querySelector('.result__block_ndfl-expenditure');
+const resultBlockNdflIncome = osno.querySelector('.result__block_ndfl-income');
+const resultBlockTaxIncome = osno.querySelector('.result__block_tax-income');
+
+const resultTaxNds = osno.querySelector('.result__tax_total');
+const resultTaxProperty = osno.querySelector('.result__tax_property');
+const resultTaxNdflExpenditure = osno.querySelector('.result__tax_ndfl-expenditure');
+const resultTaxNdflIncome = osno.querySelector('.result__tax_ndfl-income');
+const resultTaxIncome = osno.querySelector('.result__tax_income');
+
+resultBlockTaxIncome.style.display = 'none';
+
+formOsno.addEventListener('input', () => {
+    if (formOsno.type.value === 'business') {
+        resultBlockTaxIncome.style.display = 'none';
+        resultBlockNdflExpenditure.style.display = 'block';
+        resultBlockNdflIncome.style.display = 'block';
+    }
+
+    if (formOsno.type.value === 'corporation') {
+        resultBlockTaxIncome.style.display = 'block';
+        resultBlockNdflExpenditure.style.display = 'none';
+        resultBlockNdflIncome.style.display = 'none';
+    }
 })

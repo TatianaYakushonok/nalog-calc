@@ -228,12 +228,12 @@
             <form class="calc__form">
               <div class="calc__radio-wrapper">
                 <label class="calc__label calc__label_radio">
-                  <input class="calc__radio" type="radio" name="type">
+                  <input class="calc__radio" type="radio" name="type" value="business" checked>
                   <span class="calc__text">ИП</span>
                 </label>
 
                 <label class="calc__label calc__label_radio">
-                  <input class="calc__radio" type="radio" name="type">
+                  <input class="calc__radio" type="radio" name="type" value="corporation">
                   <span class="calc__text">ООО</span>
                 </label>
 
@@ -261,27 +261,27 @@
 
             <div class="result__block">
               <p class="result__caption">НДС</p>
-              <p class="result__tax">0</p>
+              <p class="result__tax result__tax_total">0</p>
             </div>
 
             <div class="result__block">
               <p class="result__caption">Налог на имущество</p>
-              <p class="result__tax">0</p>
+              <p class="result__tax result__tax_property">0</p>
             </div>
 
-            <div class="result__block">
+            <div class="result__block result__block_ndfl-expenditure">
               <p class="result__caption">НДФЛ(Вычет в виде расходов)</p>
-              <p class="result__tax">0</p>
+              <p class="result__tax result__tax_ndfl-expenditure">0</p>
             </div>
 
-            <div class="result__block">
+            <div class="result__block result__block_ndfl-income">
               <p class="result__caption">НДФЛ(Вычет 20% от доходов)</p>
-              <p class="result__tax">0</p>
+              <p class="result__tax result__tax_ndfl-income">0</p>
             </div>
 
-            <div class="result__block">
+            <div class="result__block result__block_tax-income">
               <p class="result__caption">Налог на прибыль 20%</p>
-              <p class="result__tax">0</p>
+              <p class="result__tax result__tax_income">0</p>
             </div>
           </div>
         </div>
