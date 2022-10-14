@@ -49,7 +49,7 @@ formAusn.addEventListener('input', function() {
     }
 
     if (formAusn.type.value === 'expenses') {
-        calcLabelExpenses.style.display = 'block';
+        calcLabelExpenses.style.display = '';
         resultTaxTotal.textContent = formatCurrency((formAusn.income.value - formAusn.expenses.value) * 0.2);
     }
 })
@@ -103,26 +103,50 @@ const formOsno = osno.querySelector('.calc__form');
 
 const resultBlockNdflExpenditure = osno.querySelector('.result__block_ndfl-expenditure');
 const resultBlockNdflIncome = osno.querySelector('.result__block_ndfl-income');
-const resultBlockTaxIncome = osno.querySelector('.result__block_tax-income');
+const resultBlockTaxProfit = osno.querySelector('.result__block_tax-profit');
 
-const resultTaxNds = osno.querySelector('.result__tax_total');
+const resultTaxNds = osno.querySelector('.result__tax_nds');
 const resultTaxProperty = osno.querySelector('.result__tax_property');
 const resultTaxNdflExpenditure = osno.querySelector('.result__tax_ndfl-expenditure');
 const resultTaxNdflIncome = osno.querySelector('.result__tax_ndfl-income');
-const resultTaxIncome = osno.querySelector('.result__tax_income');
+const resultTaxProfit = osno.querySelector('.result__tax_profit');
 
-resultBlockTaxIncome.style.display = 'none';
-
-formOsno.addEventListener('input', () => {
+const checkFormBusiness = () => {
     if (formOsno.type.value === 'business') {
-        resultBlockTaxIncome.style.display = 'none';
-        resultBlockNdflExpenditure.style.display = 'block';
-        resultBlockNdflIncome.style.display = 'block';
+        resultBlockTaxProfit.style.display = 'none';
+        resultBlockNdflExpenditure.style.display = '';
+        resultBlockNdflIncome.style.display = '';
     }
 
     if (formOsno.type.value === 'corporation') {
-        resultBlockTaxIncome.style.display = 'block';
+        resultBlockTaxProfit.style.display = '';
         resultBlockNdflExpenditure.style.display = 'none';
         resultBlockNdflIncome.style.display = 'none';
     }
-})
+};
+
+checkFormBusiness();
+
+formOsno.addEventListener('input', () => {
+    checkFormBusiness();
+
+    const income = formOsno.income.value;
+    const expenditure = formOsno.expenditure.value;
+    const property = formOsno.property.value;
+
+    const nds = income * 0.2;
+    const taxProperty = property * 0.02;
+    const profit = income - expenditure;
+    const ndflExpenditure = profit * 0.13;
+    const ndflIncome = (income - nds) * 0.13;
+    const TaxProfit = profit * 0.2;
+
+    resultTaxNds.textContent = nds;
+    resultTaxProperty.textContent = taxProperty;
+    resultTaxNdflExpenditure.textContent = ndflExpenditure;
+    resultTaxNdflIncome.textContent = ndflIncome;
+    resultTaxProfit.textContent = TaxProfit;
+});
+
+// calculator usn
+
