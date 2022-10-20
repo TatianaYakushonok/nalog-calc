@@ -1,3 +1,3 @@
-# nalog-calc
+# Налоговый калькулятор на javaScript
 
 https://tatianayakushonok.github.io/nalog-calc/
